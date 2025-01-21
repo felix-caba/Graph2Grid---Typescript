@@ -122,4 +122,4 @@ function randomGraph(numNodes: number): Graph {
     return graph;
 }
 
-export { placeTile, graphToGrid, gridToGraph, randomGraph }
+export { graphToGrid, gridToGraph, randomGraph }
