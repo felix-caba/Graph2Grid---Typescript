@@ -3,13 +3,13 @@
 
 Graph2Grid is a tool to convert Graph Maps to 2D Grids using recursion and 
 
-                Current features:
+Current features:
 
 - Conversion from a Graph to a Grid by using a recursive function.
 - Generating a Random Graph that may or may not comply with the 2D representation (as for now)
 - Displaying the generated Grid Object.
 
-                Future features:
+Future features:
 
 - Making the Graph Generator return a correct grid that follows up the constrains of a 2D representation
 - Dijkstra's algorithm for calculating the shortest path for a route defined by the user
