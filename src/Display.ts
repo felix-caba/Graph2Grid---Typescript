@@ -1,6 +1,6 @@
 import { Grid } from "./Grid";
 
-function displayGrid(grid: Grid) {
+export function displayGrid(grid: Grid) {
 
     /**
      * Get the x and y values of the grid.

@@ -97,7 +97,7 @@ function graphToGrid(graph: Graph): Grid | undefined {
 
 function gridToGraph(grid: Grid): Graph {
     const dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]];
-    return Object.fromEntries(Object.entries(grid.locations).map(
+    return Object.fromEntries(Object.entries(grid.locations).map( 
         ([k, [x, y]]) => [k, {
             neighbors: dirs.map(([dx, dy]) =>
                 grid.grid[x + dx]?.[y + dy]
