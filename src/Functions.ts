@@ -85,4 +85,75 @@ function randomGraph(numNodes: number): Graph {
     return graph;
 }
 
-export { graphToGrid, randomGraph }
+function gridToGraph(grid: Grid): Graph {
+    const graph: Graph = {}
+
+    console.log("Locations", grid.locations)
+    
+    for (const [id, [x, y]] of Object.entries(grid.locations)) {
+        graph[Number(id)] = { neighbors: [] }
+    }
+    for (const [id, [x, y]] of Object.entries(grid.locations)) {
+        for (const [dx, dy] of [[1, 0], [0, 1], [-1, 0], [0, -1]]) {
+            const neighbor = Object.entries(grid.locations).find(([, [px, py]]) => px === x + dx && py === y + dy);
+            if (neighbor) {
+                graph[Number(id)].neighbors.push(Number(neighbor[0]));
+            }
+        }
+    }
+    return graph;
+}
+
+
+/**
+ * Generates a Grid that is then converted to a Graph with the same structure.
+ * Makes it so the Graph is convertible to a Grid always, respecting the constrains
+ * @param numNodes Number of nodes in the graph
+ */
+function generateConvertibleGraph(numNodes: number) : Graph {
+
+    const dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+
+    const randomGrid = (): Grid => {
+
+        const grid:Grid = { locations: {} }
+    
+        const randomX = Math.floor(Math.random() * numNodes)
+        const randomY = Math.floor(Math.random() * numNodes)
+       
+        grid.locations[0] = [randomX, randomY]
+    
+        for (let i = 1; i < numNodes; i++) {
+    
+            const previousNodes = Object.keys(grid.locations).map(Number)
+    
+            // Pickss a random node that is already in the grid
+            const randomNode = previousNodes[Math.floor(Math.random() * previousNodes.length)]
+            const randomDir = dirs[Math.floor(Math.random() * dirs.length)]
+    
+            // Places a new node in a random direction from the random node
+            for(let i = 0; i < 4; i++){
+                console.log(randomDir)
+            }
+            console.log("Hola")
+            const newX = grid.locations[randomNode][0] + randomDir[0]
+            const newY = grid.locations[randomNode][1] + randomDir[1]
+    
+            // Ensure the new position is not already occupied
+            if (!Object.values(grid.locations).some(([px, py]) => px === newX && py === newY)) {
+                grid.locations[i] = [newX, newY];
+            } else {
+                i--; // Retry this iteration
+            }
+            
+        }
+        return grid
+    }
+
+    const grid: Grid = randomGrid()
+    return gridToGraph(grid)
+
+  
+}
+
+export { graphToGrid, randomGraph, generateConvertibleGraph }

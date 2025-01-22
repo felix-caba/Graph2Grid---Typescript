@@ -1,16 +1,21 @@
-import { graphToGrid, randomGraph } from "./src/Functions";
+import { generateConvertibleGraph, graphToGrid, randomGraph } from "./src/Functions";
 import { displayGrid } from "./src/Display";
 
-const exampleGraph = randomGraph(5);
-const grid = graphToGrid(exampleGraph);
 
-for (const node in exampleGraph) {
-	console.log(node, exampleGraph[node].neighbors);
-}
+const graph = generateConvertibleGraph(1000);
+
+const startTime = performance.now();
+
+const grid = graphToGrid(graph);
 
 if (grid) {
 	displayGrid(grid);
 } else {
-	console.error("Failed to convert graph to grid.");
+	console.log("Graph is not convertible to a grid");
 }
+
+const endTime = performance.now();
+console.log(`Execution time: ${endTime - startTime} milliseconds`);
+
+
 
