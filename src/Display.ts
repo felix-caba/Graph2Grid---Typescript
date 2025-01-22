@@ -1,5 +1,6 @@
 import { Grid } from "./Grid";
 
+
 export function displayGrid(grid: Grid) {
 
     /**
@@ -7,7 +8,7 @@ export function displayGrid(grid: Grid) {
      */
     const xs = Object.values(grid.locations).map(([x, _]) => x);
     const ys = Object.values(grid.locations).map(([_, y]) => y);
-
+ 
     /**
      * Gets the smallest and biggest values of the grid.
      */
@@ -21,9 +22,10 @@ export function displayGrid(grid: Grid) {
     for (let x = xMin; x <= xMax; x++) {
         ret += "\n|"
         for (let y = yMin; y <= yMax; y++) {
-            ret += String(grid.grid[x]?.[y] ?? " ").padEnd(3) + "|";
+            //ret += String(grid.grid[x]?.[y] ?? " ").padEnd(3) + "|";
+            ret += String(Object.keys(grid.locations).find(k => 
+                grid.locations[Number(k)][0] === x && grid.locations[Number(k)][1] === y) ?? " ").padEnd(3) + "|";
         }
     }
-    ret += "\nUnplaced Nodes: " + Array.from(grid.unplaced)
     console.log(ret);
 }
