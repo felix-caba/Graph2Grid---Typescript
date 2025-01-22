@@ -2,11 +2,13 @@ import { generateConvertibleGraph, graphToGrid, randomGraph } from "./src/Functi
 import { displayGrid } from "./src/Display";
 
 
-const graph = generateConvertibleGraph(1000);
+const graph = generateConvertibleGraph(30);
 
 const startTime = performance.now();
 
 const grid = graphToGrid(graph);
+
+
 
 if (grid) {
 	displayGrid(grid);
