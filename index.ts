@@ -2,9 +2,9 @@ import { generateConvertibleGraph, graphToGrid, randomGraph } from "./src/Functi
 import { displayGrid } from "./src/Display";
 
 
-const graph = generateConvertibleGraph(30);
+const graph = generateConvertibleGraph(1000);
 
-// const startTime = performance.now();
+const startTime = performance.now();
 
 const grid = graphToGrid(graph);
 
@@ -14,8 +14,8 @@ if (grid) {
 	console.log("Graph is not convertible to a grid");
 }
 
-// const endTime = performance.now();
-// console.log(`Execution time: ${endTime - startTime} milliseconds`);
+ const endTime = performance.now();
+ console.log(`Execution time: ${endTime - startTime} milliseconds`);
 
 
 
